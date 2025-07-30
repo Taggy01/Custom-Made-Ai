@@ -4,7 +4,14 @@ import speech_recognition as sr
 import webbrowser
 from time import sleep
 import pygame
+import datetime
 
+# Current Time
+x = datetime.datetime.now()
+time = x.strftime('%I %M %p')
+
+# Current Date
+date = x.strftime('%dth of %b %A')
 
 # Function to speak text
 def speak(text, delay = 170):
@@ -119,7 +126,7 @@ while True:
                 speak("Please Speak the Question")
 
         elif "shut down" in next_command or "shutdown" in next_command:
-            speak("bye bye bye")
+            speak("Seeya later.. Hope You Call Me Soon.")
             break
         elif "open google" in next_command:
             speak("Opening Google")
@@ -137,6 +144,15 @@ while True:
         elif "thank" in next_command:
             speak("My Pleasure.")
 
+        elif 'what date' in next_command:
+            speak(date)
+        
+        elif 'what time' in next_command:
+            speak(time)
+
+        elif 'what day' in next_command:
+            speak(x.strftime('%A'))
+        
         else:
             speak("Sorry, I can't do that yet.")
         
